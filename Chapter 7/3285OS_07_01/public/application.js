@@ -17,6 +17,10 @@ mainApplicationModule.config(['$locationProvider',
 // Fix Facebook's OAuth bug
 if (window.location.hash === '#_=_') window.location.hash = '#!';
 
+// Fix redirect bug to /# that happens on some browsers
+
+if (window.location.href.slice(-1) === '#') window.location.hash = "#!";
+
 // Manually bootstrap the AngularJS application
 angular.element(document).ready(function() {
 	angular.bootstrap(document, [mainApplicationModuleName]);
